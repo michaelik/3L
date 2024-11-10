@@ -1,0 +1,27 @@
+server:
+  port: 3030
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss} [%thread] %highlight(%-5level) %cyan(%logger{10}) : %msg%n"
+
+spring:
+  application:
+    name: 3Line
+  datasource:
+    url: jdbc:h2:mem:transactiondb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+
+
+# http://localhost:8080/h2-console
+
