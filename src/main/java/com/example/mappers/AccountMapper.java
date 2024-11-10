@@ -9,7 +9,7 @@ public interface AccountMapper {
     static AccountDTO toDTO(Account account) {
         return AccountDTO.builder()
                 .id(account.getId())
-                .accountType(account.getAccountType().toString())
+                .accountType(account.getAccountType())
                 .balance(account.getBalance())
                 .transaction(account.getTransactions() != null
                         ? account.getTransactions().stream().map(TransactionMapper::toDTO).toList()
