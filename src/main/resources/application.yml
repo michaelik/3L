@@ -22,6 +22,16 @@ spring:
     hibernate:
       ddl-auto: create
 
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  packages-to-scan:
+    - com.example.controller
+
 
 # http://localhost:8080/h2-console
 
