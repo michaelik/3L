@@ -21,9 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class AccountServiceImpl implements AccountService {
 
-    private final CustomerRepository customerRepository;
-    private final AccountRepository accountRepository;
-    private final TransactionService transactionService;
+    private CustomerRepository customerRepository;
+    private AccountRepository accountRepository;
+    private TransactionService transactionService;
 
 
     @Override
