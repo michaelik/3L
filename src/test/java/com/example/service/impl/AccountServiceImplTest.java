@@ -38,26 +38,30 @@ class AccountServiceImplTest {
     @InjectMocks
     private AccountServiceImpl accountService;
 
+    private String customerId;
+    private AccountRequestDTO request;
+    private Customer existingCustomer;
+    private Account newAccount;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+
+        customerId = "3LINE001";
+        request = AccountRequestDTO.builder()
+                .initialCredit(BigDecimal.valueOf(100.0))
+                .build();
+        existingCustomer = Customer.builder()
+                .customerId(customerId)
+                .build();
+        newAccount = Account.builder()
+                .accountType(AccountType.CURRENT)
+                .customer(existingCustomer)
+                .build();
     }
 
     @Test
     void createCurrentAccount_NoExistingAccount_Successful() {
-        // Given
-        String customerId = "3LINE001";
-        AccountRequestDTO request = AccountRequestDTO.builder()
-                .initialCredit(BigDecimal.valueOf(100.0))
-                .build();
-        Customer existingCustomer = Customer.builder()
-                .customerId(customerId)
-                .build();
-        Account newAccount = Account.builder()
-                .accountType(AccountType.CURRENT)
-                .customer(existingCustomer)
-                .build();
-
         when(customerRepository.findByCustomerId(customerId)).thenReturn(Optional.of(existingCustomer));
         when(accountRepository.existsByCustomerAndAccountType(existingCustomer, AccountType.CURRENT)).thenReturn(false);
         when(accountRepository.save(newAccount)).thenAnswer(invocation -> invocation.getArgument(0));
@@ -79,15 +83,6 @@ class AccountServiceImplTest {
 
     @Test
     void createCurrentAccount_ExistingAccount_ThrowsDuplicateAccountException() {
-        // Given
-        String customerId = "3LINE001";
-        AccountRequestDTO request = AccountRequestDTO.builder()
-                .initialCredit(BigDecimal.valueOf(100.0))
-                .build();
-        Customer existingCustomer = Customer.builder()
-                .customerId(customerId)
-                .build();
-
         when(customerRepository.findByCustomerId(customerId)).thenReturn(Optional.of(existingCustomer));
         when(accountRepository.existsByCustomerAndAccountType(existingCustomer, AccountType.CURRENT)).thenReturn(true);
 
@@ -105,12 +100,6 @@ class AccountServiceImplTest {
 
     @Test
     void createCurrentAccount_CustomerNotFound_ThrowsCustomerNotFoundException() {
-        // Given
-        String customerId = "3LINE001";
-        AccountRequestDTO request = AccountRequestDTO.builder()
-                .initialCredit(BigDecimal.valueOf(100.0))
-                .build();
-
         when(customerRepository.findByCustomerId(customerId)).thenReturn(Optional.empty());
 
         // When
