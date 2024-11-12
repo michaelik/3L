@@ -6,8 +6,8 @@ This RESTful API provides an endpoint for opening a new current account for exis
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/username/3line-coding-exercise.git
-    cd 3line-coding-exercise
+    git clone https://github.com/michaelik/3L.git
+    cd 3l
     ```
 
 2. **Run the application:**
@@ -81,7 +81,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:transactiondb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:transactiondb;
     driverClassName: org.h2.Driver
     username: sa
     password: 
@@ -105,7 +105,7 @@ The application includes two preloaded customer records, with `customerId` value
 #### Create Current Account
 
 ```http
-POST http://localhost:3030//api/accounts/3LINE001
+POST http://localhost:3030/api/accounts/3LINE001
 ```
 
 **Request Body:**
