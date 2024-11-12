@@ -19,10 +19,10 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class TransactionServiceImpl implements TransactionService {
 
     private final AccountRepository accountRepository;
+
     private final TransactionRepository transactionRepository;
 
 

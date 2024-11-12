@@ -18,11 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class AccountServiceImpl implements AccountService {
 
     private CustomerRepository customerRepository;
+
     private AccountRepository accountRepository;
+
     private TransactionService transactionService;
 
 
