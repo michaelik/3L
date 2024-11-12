@@ -9,7 +9,7 @@ spring:
   application:
     name: 3Line
   datasource:
-    url: jdbc:h2:mem:transactiondb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:transactiondb;
     driverClassName: org.h2.Driver
     username: sa
     password:
