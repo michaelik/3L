@@ -1,0 +1,32 @@
+# Ignore the Gradle cache and wrapper files
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+
+# Ignore build outputs
+build
+out
+target
+
+# Ignore IDE-specific files
+*.iml
+.idea/
+*.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore Docker-related files (if not needed in the image)
+docker-compose.yml
+.dockerignore
+
+# Ignore test files (optional, if you don't want them in the image)
+src/test/
+
+# Ignore Git files
+.git
+.gitignore
