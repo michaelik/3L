@@ -1,4 +1,4 @@
-# Build stage with JDK 21
+# Use a JDK 21 base image for building
 FROM eclipse-temurin:21-jdk AS builder
 WORKDIR /app
 
@@ -9,14 +9,12 @@ RUN apt-get update && apt-get install -y curl unzip && \
     rm gradle.zip
 ENV PATH="/opt/gradle/gradle-7.6/bin:${PATH}"
 
-# Copy project files
+# Copy project files and build
 COPY . .
-
-# Build the application
 RUN gradle clean build -x test
 
 # Use a lightweight JDK runtime for the final image
-FROM eclipse-temurin:21-jre-slim
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copy the application JAR from the build stage
@@ -27,5 +25,6 @@ EXPOSE 3030
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
 
 
