@@ -1,5 +1,5 @@
 # Use a JDK 17 base image for building
-FROM eclipse-temurin:17-jdk-alpine AS builder
+FROM gradle:7.6-jdk17-alpine AS builder
 WORKDIR /app
 
 # Copy project files and build
