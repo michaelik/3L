@@ -9,13 +9,14 @@ spring:
   application:
     name: 3Line
   datasource:
-    url: jdbc:h2:mem:transactiondb;
+#    spring.datasource.url=jdbc:h2:file:./data/transactiondb;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:transactiondb;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     username: sa
     password:
   h2:
     console:
-      enabled: true
+      enabled: false
       path: /h2-console
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
