@@ -11,7 +11,7 @@ FROM eclipse-temurin:17-jre-alpine AS runtime
 WORKDIR /app
 
 # Copy the application JAR from the build stage
-COPY --from=builder /app/build/libs/gradle-wrapper.jar app.jar
+COPY --from=builder /app/build/libs/demo-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application's port
 EXPOSE 3030
