@@ -2,8 +2,8 @@ name: 3Line Build and Test
 
 on:
   push:
-    branches-ignore:
-      - 'master'
+    branches:
+      - 'main'
 
 jobs:
   build:
